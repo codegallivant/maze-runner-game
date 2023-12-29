@@ -1,0 +1,684 @@
+<html>
+<!--
+I'm Still working on this game.
+Don't read that shuckin crap now:
+Hi guys, this is actually my first proper game I've made.
+I hope you guys like it.
+
+To understand the game better, read the book, 'THE MAZE RUNNER'.
+
+But theres no problem if you haven't read the book. Just click on the 'HOW TO' button.
+-->
+<head>
+  <title>THE MAZE RUNNER(Game Making in Progress)</title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Ceviche+One|Press+Start+2P" rel="stylesheet">
+  <style>
+  button:hover{
+    cursor: pointer;
+  }
+  button{
+    box-shadow: 10px 5px 5px black;
+  }
+  #gameBar{
+    width: 99.35%;
+    height: 50px;
+    position: absolute;
+    top: 160px;
+    background-color: #253e01;
+    border-bottom: 20px solid #1f2f01;
+    border-right: 5px solid DARKGREEN;
+    border-left: 5px solid DARKGREEN;
+    border-top: 4px solid #1f2f01;
+    text-align: center;
+  }
+  #shmap{
+    border: 7px ridge darkgreen;
+    font-weight: bold;
+    color: lightgreen;
+    width: 200px;
+    border-radius: 50px;
+    font-family: 'Ceviche One';
+    font-size: 2em;
+    background: linear-gradient(#3f6a00, #253e01, #1f2f06, #172307);
+  }
+  #shmap:hover, #HideMap:hover{
+    color: green;
+  }
+  #HideMap {
+    border: 7px ridge darkgreen;
+    font-weight: bold;
+    color: lightgreen;
+    width: 200px;
+    border-radius: 50px;
+    font-family: 'Ceviche One';
+    font-size: 2em;
+    background: linear-gradient(#3f6a00, #253e01, #1f2f06, #172307);
+
+  }
+  #maze{
+
+  }
+  #mapDiv{
+    display: inline-block;
+    background-color: white;
+
+
+  }
+  .MapB {
+    text-align: center;
+    color: black;
+    font-size: 1em;
+    background-color: #C8C2A8;
+    height: 48px;
+    width: 43px;
+
+    display: block;
+    opacity: 100;
+
+  }
+  .sectionB{
+    background-color: #78785A;
+
+    width: 41.58px;
+      }
+  .sectionB:hover{
+    background-color: #585132;
+    color: #C8C2A8;
+  }
+  .ontop {
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    position: absolute;
+    background-color: #cccccc;
+    color: #aaaaaa;
+    opacity: 0.4;
+    filter: alpha(opacity = 50);
+  }
+  #popup {
+    width: 1000px;
+    height: 600px;
+    position: absolute;
+    color: #000000;
+    background-color: #ffffff;
+    top: 203px;
+    left: 24%;
+    margin-top: -100px;
+    margin-left: -150px;
+  }
+  @keyframes slideinleft{
+    from{
+      position: absolute;
+      left: 0px;
+    }
+    to{
+      left: 100%
+    }
+  }
+
+  body{
+    background: linear-gradient(#1F2F06, #3F6A00, #173307);
+    margin: 0px;
+  }
+  br {
+    line-height: 47px;
+  }
+  hr{
+    background-color: #253e01;
+    height: 5px;
+    border: 0;
+  }
+  .player-body{
+    color: white;
+    font-size: 1em;
+    height: 45px;
+    width: 35px;
+    background-color: blue;
+    border-radius: 7px;
+    border: 4px groove  blue;
+    position: relative;
+    left: 10px;
+
+  }
+  .player-eyes{
+    height: 4px;
+  	width: 7px;
+  	border-radius: 6px;
+  	background-color: grey;
+
+  }
+  #player-eye-one{
+    margin-left: 5px;
+  }
+  #player-eye-two{
+    margin-right: 5px;
+  }
+  #player-mouth{
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 10px;
+    background-color: grey;
+    width: 20px;
+  }
+  .BBrick{
+    text-align: center;
+    color: grey;
+    font-size: 1em;
+    background-color: #253E01;
+    height: 48px;
+    width: 43px;
+    border-radius: 2px;
+  }
+
+  .UBBrick{
+    background: linear-gradient(darkgreen, #1f2f06);
+    height:47px;
+    width: 43px;
+    border-radius: 2px;
+
+  }
+  @keyframes slideintop {
+    from {
+      margin-top: -20%;
+      height: 0%;
+      padding: 0%;
+    }
+
+    to {
+      margin-top: 0%;
+      height: : 50px;
+      padding: 40px;
+    }
+  }
+  #headSpace{
+    line-height: 5PX;
+  }
+  #HEAD{
+    border: 5px solid darkgreen;
+    border-bottom: 20px solid #253E01;
+    border-top: 20px solid #253e01;
+    margin-top: 0px;
+
+    font-size: 1.5em;
+    font-family: 'Press Start 2P';
+    text-align: center;
+    height: 60px;
+    padding: 40px;
+    background: linear-gradient(darkgreen, #253E01);
+    color: #4f8600;
+    animation-name: slideintop;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+  }
+  @keyframes stretch {
+    from {
+      width: 0%;
+
+    }
+    to {
+      width: 330px;
+      padding:20px;
+    }
+}
+    @keyframes hide
+    {
+        from { opacity: 0; } to { opacity: 0 }
+    }
+   .form{
+     box-shadow: 10px 5px 5px black;
+    border: 7px ridge darkgreen;
+    font-weight:bold;
+    color: lightgreen;
+    border-radius: 100px;
+    width: 340px;
+    padding:20px;
+    font-family: 'Ceviche One';
+    font-size: 3em;
+    margin-left: 50px;
+    margin-right: 50px;
+    animation-name: hide, stretch;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-delay: 0s, 0.3s;
+  }
+   #play:active, #how:active, #ldr:active{
+     font-size: 2.5em;
+     padding: 20px;
+     border: 10px ridge darkgreen;
+   }
+   #play:hover, #how:hover, #ldr:hover {
+     color: green;
+     border: 10px ridge darkgreen;
+     cursor: pointer;
+   }
+   .form{
+     background: linear-gradient(#3f6a00, #253e01, #1f2f06, #172307);
+
+   }
+  </style>
+
+  <script type="text/javascript">
+  function BrickMaker(ArrayName, BrickDefaultId, toBeAppendedOn, NoOfColVar, SpecifiedClass, ExtraSpace, ExtraDefaultIdNo, BrickLeftPosition, BrickStyleLeft, STOPVarFeed, currentBrick, previousBrick, currentBrickid, previousBrickId, ArrayElement, BrickRow, BrickStyleTop ) {
+      BrickLeftPosition=0;
+      BrickRow=0;
+      BrickStyleTop=200+(BrickRow*48)+"px";
+        for(ForLoopRowVar=0;ForLoopRowVar<10;ForLoopRowVar++) {
+            for(ForLoopBrickVar=0;ForLoopBrickVar<NoOfColVar;ForLoopBrickVar++) {
+              console.log("array:"+ArrayName[ForLoopRowVar]);
+              console.log("BrickRow:"+BrickRow);
+              console.log("ForLoopRowVar:"+ForLoopRowVar);
+              console.log("ForLoopBrickVar:"+ForLoopBrickVar);
+              //MarrayE = Marrays[Mrow][Mh];
+              ArrayElement=ArrayName[BrickRow][ForLoopBrickVar];
+              toBeAppendedOn.appendChild(ArrayElement);
+              ArrayElement.id=ForLoopBrickVar+BrickDefaultId;
+
+              ArrayElement.className="Block "+(SpecifiedClass.toString())+" row"+BrickRow.toString();
+
+              console.log("ArrayElement:"+ArrayElement);
+
+              currentBrickid=document.getElementById(ForLoopBrickVar+BrickDefaultId).id;
+              previousBrickId=parseFloat(document.getElementById(ForLoopBrickVar+BrickDefaultId).id)-1;
+              console.log('currentID:'+currentBrickid);
+              console.log('previousID:'+previousBrickId);
+
+              currentBrick=document.getElementById(currentBrickid);
+              previousBrick=document.getElementById(previousBrickId+1);
+              console.log('currentElement:'+currentBrick);
+              console.log('previousElement:'+previousBrick);
+
+              currentBrick.style.marginLeft=(ForLoopBrickVar+(BrickDefaultId-(BrickDefaultId-ExtraDefaultIdNo)))*43;
+
+              document.getElementById(ForLoopBrickVar+BrickDefaultId).style.position="absolute";
+              document.getElementById(ForLoopBrickVar+BrickDefaultId).style.borderBottom="0px";
+              document.getElementById(ForLoopBrickVar+BrickDefaultId).style.top=(parseInt(parseFloat(BrickStyleTop))+50).toString()+(ExtraTop).toString()+"px";
+              document.getElementById(ForLoopBrickVar+BrickDefaultId).style.left=(parseInt(parseFloat(BrickStyleLeft))+150).toString()+"px";
+              console.log('Element added');
+            }
+            console.log('Row added');
+            BrickRow++;
+            BrickStyleTop=200+(BrickRow*48)+"px";
+            BrickLeftPosition=(BrickRow*40*(NoOfColVar+1))+(2*BrickRow)-ExtraSpace;
+            toBeAppendedOn.innerHTML+="<br>";
+            BrickDefaultId+=NoOfColVar;
+            //rows.style.left=h*90+"px";
+          }
+        }
+    function pop(div) {
+      var toBePopped=document.getElementById(div);
+      document.getElementById(div).style.display = 'block';
+      toBePopped.style.animation="slideintop 1s 1";
+    }
+    function hide(div) {
+      document.getElementById(div).style.display = 'none';
+    }
+    //To detect escape button
+    document.onkeydown = function(evt) {
+      evt = evt || window.event;
+      if (evt.keyCode == 27) {
+        hide('popDiv');
+      }
+    };
+  </script>
+
+</head>
+<body>
+
+  <div id="HEAD"><h1>THE MAZE RUNNER- GAME</h1></div>
+
+  <hr>
+
+<div id="content">
+  <center>
+    <br>
+
+  <input type="button" value="PLAY" id="play" class="form">
+  <br>
+  <br>
+  <input type="button" value="LEADERBOARDS" id="ldr" class="form">
+  <br>
+  <br>
+  <input type="button" value="HOW TO" id="how" class="form">
+</center>
+</div>
+<!--
+<div id="popDiv" class="ontop">
+			<div id="popup">
+						<a href="#" onClick="hide('popDiv')">Close</a>
+            <br>
+			</div>
+		</div>
+-->
+</body>
+
+<script src="MazeVariableMaker.js"></script>
+<script src="MapVariableMaker.js"></script>
+<script>
+
+
+var DefaultId=0;
+var row=0;
+play.onclick=function() {
+  content.innerHTML='';
+  var gameBarCL=document.createElement('div');
+  content.appendChild(gameBarCL);
+  gameBarCL.id="gameBar";
+  var gameBar=document.getElementById("gameBar");
+
+  var maze=document.createElement('div');
+  maze.id="maze";
+  content.appendChild(maze);
+  var NBrickLeftPos=0;
+  BrickMaker(arrays, 0, maze, NoC, "BBrick", 0, 0, NBrickLeftPos, ((-1*NBrickLeftPos)).toString()+"px");
+  BrickMaker(arrays, 200, maze, NoC, "BBrick", 0, 200, NBrickLeftPos, ((-1*NBrickLeftPos)-8623).toString()+"px");
+
+/*
+  var currentBid;
+  var previousBid;
+  var currentB;
+  var previousB;
+  var arrayE;
+  var BrickLeftPos=0;
+  for(r=0;r<10;r++) {
+    for(h=0;h<NoC;h++) {
+      console.log("array:"+arrays[r]);
+      console.log("row:"+row);
+      console.log("r:"+r);
+      console.log("h:"+h);
+      arrayE = arrays[row][h];
+      content.appendChild(arrayE);
+      arrayE.id=h+DefaultId;
+
+      arrayE.className="block BBrick row"+row.toString();
+
+      console.log("arrayE:"+arrayE);
+      currentBid=document.getElementById(h+DefaultId).id;
+      previousBid=parseFloat(document.getElementById(h+DefaultId).id)-1;
+      console.log('currentID:'+currentBid);
+      console.log('previousID:'+previousBid);
+      currentB=document.getElementById(currentBid);
+      previousB=document.getElementById(previousBid+1);
+      console.log('currentE:'+currentB);
+      console.log('previousE:'+previousB);
+      currentB.style.marginLeft=(h+DefaultId)*43;
+      var Row0leftPos=currentB.style.left;
+      document.getElementById(h+DefaultId).style.position="absolute";
+      document.getElementById(h+DefaultId).style.borderBottom="0px";
+      document.getElementById(h+DefaultId).style.left=(-1*BrickLeftPos).toString()+"px";
+      /*
+      document.getElementById(h+DefaultId).style.left= parseFloat(previousB.style.left)+(13*40)+"px";
+      document.getElementById(h+DefaultId).style.top= parseFloat(previousB.style.top)-40+"px";
+
+      if(row!==0) {
+        currentB.style.left=(h*90)+(rowArray[row][h].style.left);
+        currentB.style.top=200+(row*40)+"px";
+      }
+      else{
+        currentB.style.top="200px";
+      }
+
+      var elem = document.getElementsByClassName(("row"+row.toString()));
+      var OrigPosLeft = getComputedStyle( elem[h], null).getPropertyValue("left");
+      var PosLeft=parseInt(OrigPosLeft)-90+"px";
+
+      var blocks=document.getElementsByClassName('block');
+      window["OrigPosLeft"+row]=currentB.style.left;
+      //blocks[arrayE.id].style.left=(parseFloat(currentB.style.left)-(h*90))+"px".toString();
+      blocks[arrayE.id].style.left=(parseFloat(window["OrigPosLeft"+row])-(h*90))+"px".toString();
+
+      console.log('Element added');
+    }
+    console.log('Row added');
+    row++;
+    BrickLeftPos=(row*40*(NoC+1))+(2*row);
+    content.innerHTML+="<br>";
+    DefaultId+=NoC;
+    //rows.style.left=h*90+"px";
+  }
+*/
+
+  //Player commands
+  var playerBody= document.createElement('div');
+  playerBody.className="player-body";
+  var PBodyC=document.getElementsByClassName("player-body")
+  PBodyC.textContent="G";
+  var PlayerPosDefault=document.getElementById(116);
+  PlayerPosDefault.classList.remove("BBrick");
+  PlayerPosDefault.className="player-body row9";
+  var prevPlaceId=116;
+  var prevPlace=document.getElementById(prevPlaceId);
+
+
+  //Maze obstacles
+  var UBBrick = [
+    document.getElementById(81),
+    document.getElementById(82),
+    document.getElementById(71),
+    document.getElementById(61)
+  ];
+  for(i=0 ; i<UBBrick.length ; i++) {
+      UBBrick[i].classList.remove("BBrick");
+      UBBrick[i].className+=" UBBrick";
+      console.log('UBBrick added');
+  }
+
+//Player movements
+  document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37:
+          if((PlayerPosDefault.id % NoC) !== 0) {
+            console.log('first true');
+            console.log(PlayerPosDefault.id-1);
+            if(document.getElementById(PlayerPosDefault.id-1).classList.contains('UBBrick')) {}
+            else {
+              prevPlace.classList.remove("player-body");
+              prevPlace.className+=" BBrick";
+              prevPlaceId--;
+              PlayerPosDefault=document.getElementById(prevPlaceId);
+              PlayerPosDefault.classList.add("player-body");
+              PlayerPosDefault.classList.remove("BBrick");
+              prevPlace=document.getElementById(prevPlaceId);
+              console.log(prevPlaceId);
+              console.log(prevPlace);
+              console.log(PlayerPosDefault);
+
+            }
+          }
+        break;
+
+        case 39:
+            //alert('right');
+            if((PlayerPosDefault.id % NoC)!==(NoC-1)) {
+              console.log('first true');
+              console.log(parseFloat(PlayerPosDefault.id)+1);
+              if(document.getElementById(parseFloat(PlayerPosDefault.id)+1).classList.contains('UBBrick')) {}
+              else {
+                prevPlace.classList.remove("player-body");
+                prevPlace.className+=" BBrick";
+                prevPlaceId++;
+                PlayerPosDefault=document.getElementById(prevPlaceId);
+                PlayerPosDefault.className+=" player-body";
+                PlayerPosDefault.classList.remove("BBrick");
+                prevPlace=document.getElementById(prevPlaceId);
+                console.log(prevPlaceId);
+                console.log(prevPlace);
+                console.log(PlayerPosDefault);
+
+              }
+            }
+        break;
+
+        case 38:
+            //alert('up');
+            if(PlayerPosDefault.classList.contains("row0")) {}
+            else{
+              if(document.getElementById(parseFloat(PlayerPosDefault.id)-NoC).classList.contains("UBBrick")) {}
+              else{
+                prevPlace.classList.remove("player-body");
+                prevPlace.className+=" BBrick";
+                prevPlaceId-=NoC;
+                PlayerPosDefault=document.getElementById(prevPlaceId);
+                PlayerPosDefault.className+=" player-body";
+                PlayerPosDefault.classList.remove("BBrick");
+                prevPlace=document.getElementById(prevPlaceId);
+                console.log(prevPlaceId);
+                console.log(prevPlace);
+                console.log(PlayerPosDefault);
+
+              }
+            }
+        break;
+
+        case 40:
+            //alert('down');
+            if(PlayerPosDefault.classList.contains("row9")) {}
+            else {
+              if(document.getElementById(parseFloat(PlayerPosDefault.id)+NoC).classList.contains("UBBrick")) {}
+              else{
+                prevPlace.classList.remove("player-body");
+                prevPlace.className+=" BBrick";
+                prevPlaceId+=NoC;
+                PlayerPosDefault=document.getElementById(prevPlaceId);
+                PlayerPosDefault.className+=" player-body";
+                PlayerPosDefault.classList.remove("BBrick");
+                prevPlace=document.getElementById(prevPlaceId);
+                console.log(prevPlaceId);
+                console.log(prevPlace);
+                console.log(PlayerPosDefault);
+              }
+            }
+            break;
+    }
+
+
+};
+    //MAP:
+    var map=document.createElement('div');
+    content.appendChild(map);
+
+    var mapButtonCL=document.createElement('button');
+    var mapButtonCLhide=document.createElement('button');
+
+    gameBar.appendChild(mapButtonCL);
+
+    mapButtonCL.innerHTML="Show Map";
+    mapButtonCLhide.innerHTML="Hide Map"
+
+    mapButtonCL.id="ShMap";
+    mapButtonCLhide.id="HideMap";
+
+    var mapButtonHIDE=document.getElementById('HideMap');
+    var mapButtonSHOW=document.getElementById('ShMap');
+
+
+    mapButtonSHOW.onclick=function() {
+      console.log('map show function started');
+      gameBar.innerHTML="";
+      gameBar.appendChild(mapButtonCLhide);
+
+      mapButtonCLhide.onclick=function() {
+        console.log('map hide function started');
+        map.innerHTML="";
+        gameBar.innerHTML="";
+        gameBar.appendChild(mapButtonSHOW);
+      };
+
+      map.id="mapDiv";
+      map.innerHTML="";
+
+      var MSBrickLeftPos=0;
+      BrickMaker(Marrays, 1000, map, MNoC, "MapB", (43*MNoC)-43, 1000, MSBrickLeftPos, ((-1*MSBrickLeftPos)-42350).toString()+"px");
+
+      var sections=[
+        document.getElementById(1010), document.getElementById(1015), document.getElementById(1025), document.getElementById(1035)
+      ];
+
+      for(sectionSetLoop=0;sectionSetLoop<sections.length;sectionSetLoop++) {
+        sections[sectionSetLoop].textContent="Sect "+(sectionSetLoop+1).toString();
+        sections[sectionSetLoop].classList.add('sectionB');
+        sections[sectionSetLoop].onclick=function() {
+        console.log('section'+sectionSetLoop.toString());
+        map.innerHTML="";
+        window["MS"+sectionSetLoop+"BrickLeftPos"]=0;
+        window["DEFid"+sectionSetLoop]=1000+(sectionSetLoop*200);
+        BrickMaker(Marrays, window["DEFid"+sectionSetLoop], map, MNoC, "MapB", (43*MNoC)-43, 1200+(sectionSetLoop*200), window["MS"+sectionSetLoop+"BrickLeftPos"], ((-1*window["MS"+sectionSetLoop+"BrickLeftPos"])-85352).toString()+"px");
+
+      };
+
+
+    };
+
+
+
+
+
+
+
+
+
+      /*
+      var MDefaultId=1000;
+      var Mrow=0;
+
+      var McurrentBid;
+      var MpreviousBid;
+      var McurrentB;
+      var MpreviousB;
+      var MarrayE;
+      var MBrickLeftPos=0;
+      for(Mr=0;Mr<10;Mr++) {
+        for(Mh=0;Mh<MNoC;Mh++) {
+          console.log("array:"+Marrays[Mr]);
+          console.log("Mrow:"+Mrow);
+          console.log("Mr:"+Mr);
+          console.log("Mh:"+Mh);
+          MarrayE = Marrays[Mrow][Mh];
+          content.appendChild(MarrayE);
+          MarrayE.id=Mh+MDefaultId;
+
+          MarrayE.className="block MapB row"+Mrow.toString();
+
+          console.log("MarrayE:"+MarrayE);
+          McurrentBid=document.getElementById(Mh+MDefaultId).id;
+          MpreviousBid=parseFloat(document.getElementById(Mh+MDefaultId).id)-1;
+          console.log('McurrentID:'+McurrentBid);
+          console.log('MpreviousID:'+MpreviousBid);
+          McurrentB=document.getElementById(McurrentBid);
+          MpreviousB=document.getElementById(MpreviousBid+1);
+          console.log('McurrentE:'+McurrentB);
+          console.log('MpreviousE:'+MpreviousB);
+          McurrentB.style.marginLeft=(Mh+(MDefaultId-1000))*43;
+          var MRow0leftPos=currentB.style.left;
+          document.getElementById(Mh+MDefaultId).style.position="absolute";
+          document.getElementById(Mh+MDefaultId).style.borderBottom="0px";
+          document.getElementById(Mh+MDefaultId).style.top=200+(Mrow*48)+"px";
+          document.getElementById(Mh+MDefaultId).style.left=(-1*MBrickLeftPos).toString()+"px";
+          console.log('Element added');
+        }
+        console.log('Row added');
+        Mrow++;
+        MBrickLeftPos=(Mrow*40*(MNoC+1))+(2*Mrow)-(43*MNoC)-43;
+        content.innerHTML+="<br>";
+        MDefaultId+=MNoC;
+        //rows.style.left=h*90+"px";
+      }
+*/
+};
+
+};
+
+ldr.onclick=function(){
+  content.innerHTML="<center><h2>Leaderboards</h2><center>";
+};
+
+how.onclick=function(){
+  content.innerHTML="<center><h2>How to Play</h2></center>";
+};
+
+</script>
+</html>

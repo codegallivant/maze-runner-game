@@ -1,0 +1,10 @@
+map is not made, hovering part is left (to show where everything is). z index to be added.
+The real maze will be going up. the map will show the directions. There will be grievers here and there, but the map will not show that.
+The grievers will be attacked with spears and swords, by throwing them. The grievers will attack by stinging or diving, the attacker will have to move back for that.
+There will be around 4 sections to go through(out of 8) and the map will tell the user which section it has to go first.
+the map will be branched out into 8 sections in which each section the paths will be shown and the path to go through will be marked with a white line.
+
+the rows of the maze will max 10 and any additional to be added will be added by using a scrolling div. the div height will be specified and if the content overflows, the div will scroll automatically.
+
+map ids will start from 1000 and end at ____. Real game section 1 is almost made.
+Map to be made fully immediately.

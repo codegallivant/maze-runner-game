@@ -1,0 +1,763 @@
+<html>
+<head>
+  <style>
+  .player-body{
+    height: 40px;
+    width: 40px;
+    background-color: blue;
+    border-radius: 5px;
+    border: 2px groove  blue;
+  }
+  .player-eyes{
+    height: 4px;
+  	width: 7px;
+  	border-radius: 6px;
+  	-moz-border-radius: 6px;
+  	-webkit-border-radius: 6px;
+  	background-color: black;
+
+  }
+  #player-eye-one{
+    margin-left: 10px;
+  }
+  #player-eye-two{
+    margin-right: 10px;
+  }
+  #player-mouth{
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 10px;
+    background-color: black;
+    width: 20px;
+  }
+  .BBrick{
+    text-align: center;
+    color: #632900;
+    font-size: 1em;
+    background-color: #8b4513;
+    height: 40px;
+    width: 40px;
+    border: 2px solid #8b4513;
+    border-radius: 0px;
+  }
+  .row1{
+    position: absolute;
+    top: 200px;
+  }
+  .row2{
+    position: absolute;
+    top: 240px;
+    left: -422px;
+  }
+  .row3{
+    position: absolute;
+    top: 280px;
+    left:-852px;
+
+
+  }
+  .row4{
+    position: absolute;
+    left: -1282px;
+    top: 320px;
+
+  }
+  .row5{
+    position: absolute;
+    top: 360px;
+    left: -1712px;
+  }
+  .row6{
+    position: absolute;
+    top: 400px;
+    left: -2142px;
+  }
+  .row7{
+    position: absolute;
+    top: 440px;
+    left: -2572px;
+  }
+  .row8{
+    position: absolute;
+    top: 480px;
+    left: -3002px;
+  }
+  .row9{
+    position: absolute;
+    top: 520px;
+    left:-3432px;
+  }
+  .row10{
+    position: absolute;
+    top: 560px;
+    left: -3862px;
+
+  }
+  .UBBrick{
+    background-color: black;
+    height:40px;
+    width: 40px;
+    border: 5px groove black;
+    border-radius: 5px;
+  }
+  #HEAD{
+    text-size: 2em;
+    font-family: monospace;
+    text-align: center;
+    height: 50px;
+    padding: 10px;
+  }
+  #play{
+    background-color: blue;
+    border: 5px ridge blue;
+    font-weight:bold;
+    color: white;
+    border-radius: 3px;
+    width: 180px;
+    padding:10px;
+    font-family: cursive;
+    font-size: 1em;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  #how{
+    background-color: green;
+    border: 5px ridge green;
+    font-weight:bold;
+    color: white;
+    border-radius: 3px;
+    width: 180px;
+    padding:10px;
+    font-family: cursive;
+    font-size: 1em;
+    margin-left: 50px;
+    margin-right: 50px;
+
+
+  }
+  #ldr{
+    background-color: red;
+    border: 5px ridge red;
+    font-weight: bold;
+    font-weight:bold;
+    color: white;
+    border-radius: 3px;
+    width: 200px;
+    padding:10px;
+    font-family: cursive;
+    font-size: 1em;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+   #play:active{
+     font-size: 1.2em;
+     padding: 0px;
+     padding: 7px;
+   }
+   #how:active{
+     font-size: 1.2em;
+     padding: 0px;
+     padding: 7px;
+   }
+   #ldr:active{
+     font-size: 1.2em;
+     padding: 7px;
+   }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+  var BBrick = document.createElement('div');
+  var UBBrick = document.createElement('div');
+
+  /*
+  playerBody.appendChild(playerMouth);
+  playerBody.appendChild(playerEyeOne);
+  playerBody.appendChild(playerEyeTwo);
+  */
+
+  BBrick.textContent="BB";
+  UBBrick.textContent="UBB";
+  BBrick.className="BBrick";
+  UBBrick.className="UBBrick";
+
+
+  </script>
+</head>
+<body>
+  <div id="HEAD"><h1>THE BRICK BREAKER</h1></div>
+  <hr>
+  <br>
+  <br>
+
+<div id="content">
+  <center>
+  <input type="button" value="PLAY" id="play" class="form">
+  <input type="button" value="LEADERBOARDS" id="ldr" class="form">
+  <input type="button" value="HOW TO" id="how" class="form">
+</center>
+
+</div>
+
+</body>
+<script>
+var play=document.getElementById("play");
+var ldr=document.getElementById('ldr');
+var how=document.getElementById('how');
+var content=document.getElementById('content');
+
+var aZero=document.createElement('div');
+var aOne=document.createElement('div');
+var aTwo=document.createElement('div');
+var aThree=document.createElement('div');
+var aFour=document.createElement('div');
+var aFive=document.createElement('div');
+var aSix=document.createElement('div');
+var aSeven=document.createElement('div');
+var aEight=document.createElement('div');
+var aNine=document.createElement('div');
+
+var bZero=document.createElement('div');
+var bOne=document.createElement('div');
+var bTwo=document.createElement('div');
+var bThree=document.createElement('div');
+var bFour=document.createElement('div');
+var bFive=document.createElement('div');
+var bSix=document.createElement('div');
+var bSeven=document.createElement('div');
+var bEight=document.createElement('div');
+var bNine=document.createElement('div');
+
+var cZero=document.createElement('div');
+var cOne=document.createElement('div');
+var cTwo=document.createElement('div');
+var cThree=document.createElement('div');
+var cFour=document.createElement('div');
+var cFive=document.createElement('div');
+var cSix=document.createElement('div');
+var cSeven=document.createElement('div');
+var cEight=document.createElement('div');
+var cNine=document.createElement('div');
+
+var dZero=document.createElement('div');
+var dOne=document.createElement('div');
+var dTwo=document.createElement('div');
+var dThree=document.createElement('div');
+var dFour=document.createElement('div');
+var dFive=document.createElement('div');
+var dSix=document.createElement('div');
+var dSeven=document.createElement('div');
+var dEight=document.createElement('div');
+var dNine=document.createElement('div');
+
+var eZero=document.createElement('div');
+var eOne=document.createElement('div');
+var eTwo=document.createElement('div');
+var eThree=document.createElement('div');
+var eFour=document.createElement('div');
+var eFive=document.createElement('div');
+var eSix=document.createElement('div');
+var eSeven=document.createElement('div');
+var eEight=document.createElement('div');
+var eNine=document.createElement('div');
+
+var fZero=document.createElement('div');
+var fOne=document.createElement('div');
+var fTwo=document.createElement('div');
+var fThree=document.createElement('div');
+var fFour=document.createElement('div');
+var fFive=document.createElement('div');
+var fSix=document.createElement('div');
+var fSeven=document.createElement('div');
+var fEight=document.createElement('div');
+var fNine=document.createElement('div');
+
+var gZero=document.createElement('div');
+var gOne=document.createElement('div');
+var gTwo=document.createElement('div');
+var gThree=document.createElement('div');
+var gFour=document.createElement('div');
+var gFive=document.createElement('div');
+var gSix=document.createElement('div');
+var gSeven=document.createElement('div');
+var gEight=document.createElement('div');
+var gNine=document.createElement('div');
+
+var hZero=document.createElement('div')
+var hOne=document.createElement('div');
+var hTwo=document.createElement('div');
+var hThree=document.createElement('div');
+var hFour=document.createElement('div');
+var hFive=document.createElement('div');
+var hSix=document.createElement('div');
+var hSeven=document.createElement('div');
+var hEight=document.createElement('div');
+var hNine=document.createElement('div');
+
+var iZero=document.createElement('div');
+var iOne=document.createElement('div');
+var iTwo=document.createElement('div');
+var iThree=document.createElement('div');
+var iFour=document.createElement('div');
+var iFive=document.createElement('div');
+var iSix=document.createElement('div');
+var iSeven=document.createElement('div');
+var iEight=document.createElement('div');
+var iNine=document.createElement('div');
+
+var jZero=document.createElement('div');
+var jOne=document.createElement('div');
+var jTwo=document.createElement('div');
+var jThree=document.createElement('div');
+var jFour=document.createElement('div');
+var jFive=document.createElement('div');
+var jSix=document.createElement('div');
+var jSeven=document.createElement('div');
+var jEight=document.createElement('div');
+var jNine=document.createElement('div');
+
+var a = [aZero, aOne, aTwo, aThree, aFour, aFive, aSix, aSeven, aEight, aNine];
+var b = [bZero, bOne, bTwo, bThree, bFour, bFive, bSix, bSeven, bEight, bNine];
+var c = [cZero, cOne, cTwo, cThree, cFour, cFive, cSix, cSeven, cEight, cNine];
+var d = [dZero, dOne, dTwo, dThree, dFour, dFive, dSix, dSeven, dEight, dNine];
+var e = [eZero, eOne, eTwo, eThree, eFour, eFive, eSix, eSeven, eEight, eNine];
+var f = [fZero, fOne, fTwo, fThree, fFour, fFive, fSix, fSeven, fEight, fNine];
+var g = [gZero, gOne, gTwo, gThree, gFour, gFive, gSix, gSeven, gEight, gNine];
+var h = [hZero, hOne, hTwo, hThree, hFour, hFive, hSix, hSeven, hEight, hNine];
+var ri = [iZero, iOne, iTwo, iThree, iFour, iFive, iSix, iSeven, iEight, iNine];
+var j = [jZero, jOne, jTwo, jThree, jFour, jFive, jSix, jSeven, jEight, jNine];
+
+play.onclick=function(){
+  content.innerHTML='';
+
+  for(i=0;i<10;i++) {
+    console.log("a:"+a);
+    console.log("i:"+i);
+    var arrayaE = a[i];
+    content.appendChild(arrayaE);
+    arrayaE.id=i;
+    arrayaE.className="BBrick row1";
+
+    console.log("arrayaE:"+arrayaE);
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousID:'+previousBid);
+    currentB.style.marginLeft=i*43;
+    currentB.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+
+    console.log('row added');
+  }
+
+  for( i=10 ; i<20 ; i++) {
+    console.log(b);
+    console.log(i);
+    var arraybE = b[i-10];
+    console.log("arraybE"+arraybE);
+    content.appendChild(arraybE);
+    arraybE.id=i;
+    arraybE.className="BBrick row2";
+
+    console.log(arraybE);
+    var currentBidb=document.getElementById(i).id;
+    var previousBidb=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBidb);
+    var currentBb=document.getElementById(currentBidb);
+    var previousBb=document.getElementById(previousBidb);
+    console.log('currentE:'+currentBb);
+    currentBb.style.marginLeft=i*43;
+    currentBb.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+    console.log('row added');
+  }
+
+
+  for( i=20 ; i<30 ; i++) {
+    console.log(c);
+    console.log(i);
+    var arraycE = c[i-20];
+    content.appendChild(arraycE);
+    arraycE.id=i;
+    arraycE.className="BBrick row3";
+
+    console.log(arraycE);
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    currentB.style.marginLeft=i*43;
+    currentB.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+    console.log('row added');
+  }
+
+  for( i=30 ; i<40 ; i++) {
+    console.log(d);
+    console.log(i);
+    var arraydE = d[i-30];
+    content.appendChild(arraydE);
+    arraydE.id=i;
+    arraydE.className="BBrick row4";
+
+    console.log(arraydE);
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    currentB.style.marginLeft=i*43;
+    currentB.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+    console.log('row added');
+  }
+
+  for( i=40 ; i<50 ; i++) {
+    console.log(e);
+    console.log(i);
+    var arrayeE = e[i-40];
+    content.appendChild(arrayeE);
+    arrayeE.id=i;
+    arrayeE.className="BBrick row5";
+
+    console.log(arrayeE);
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    currentB.style.marginLeft=i*43;
+    currentB.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+    console.log('row added');
+  }
+
+  for( i=50 ; i<60 ; i++) {
+    console.log(f);
+    console.log(i);
+    var arrayfE = f[i-50];
+    content.appendChild(arrayfE);
+    arrayfE.id=i;
+    arrayfE.className="BBrick row6";
+
+    console.log(arrayfE);
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    currentB.style.marginLeft=i*43;
+    currentB.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+    console.log('row added');
+  }
+
+  for( i=60 ; i<70 ; i++) {
+    console.log(g);
+    console.log(i);
+    var arraygE = g[i-60];
+    content.appendChild(arraygE);
+    arraygE.id=i;
+    arraygE.className="BBrick row7";
+
+    console.log(arraygE);
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    currentB.style.marginLeft=i*43;
+    currentB.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+    console.log('row added');
+  }
+
+  for( i=70 ; i<80 ; i++) {
+    console.log(h);
+    console.log(i);
+    var arrayhE = h[i-70];
+    content.appendChild(arrayhE);
+    arrayhE.id=i;
+    arrayhE.className="BBrick row8";
+
+    console.log(arrayhE);
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    currentB.style.marginLeft=i*43;
+    currentB.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+    console.log('row added');
+  }
+
+  for( i=80 ; i<90 ; i++) {
+    console.log(ri);
+    console.log(i);
+    var arrayriE = ri[i-80];
+    content.appendChild(arrayriE);
+    arrayriE.id=i;
+    arrayriE.className="BBrick row9";
+
+    console.log(arrayriE);
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    currentB.style.marginLeft=i*43;
+    currentB.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+    console.log('row added');
+  }
+
+  for( i=90 ; i<100 ; i++) {
+    console.log(j);
+    console.log(i);
+    var arrayjE = j[i-90];
+    content.appendChild(arrayjE);
+    arrayjE.id=i;
+    arrayjE.className="BBrick row10";
+
+    console.log(arrayjE);
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    currentB.style.marginLeft=i*43;
+    currentB.style.border="2px solid brown";
+    /*
+    BBrick.id= i ;
+    BBrick.className="BBrick";
+    var currentBid=document.getElementById(i).id;
+    var previousBid=parseFloat(document.getElementById(i).id)-1;
+    console.log('currentID:'+currentBid);
+    console.log('previousID:'+previousBid);
+    var currentB=document.getElementById(currentBid);
+    var previousB=document.getElementById(previousBid);
+    console.log('currentE:'+currentB);
+    console.log('previousE:'+previousB);
+    content.appendChild(currentB);
+    */
+    console.log('row added');
+  }
+  var playerBody= document.createElement('div');
+  playerBody.className="player-body";
+
+  var PlayerPosDefault=document.getElementById(90);
+
+  PlayerPosDefault.classList.remove("BBrick");
+  PlayerPosDefault.className="player-body row10";
+  var prevPlaceId=90;
+  var prevPlace=document.getElementById(prevPlaceId);
+
+
+
+  document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37:
+          if((PlayerPosDefault.id % 10) !== 0) {
+            prevPlace.classList.remove("player-body");
+            prevPlace.className+=" BBrick";
+            prevPlaceId--;
+            PlayerPosDefault=document.getElementById(prevPlaceId);
+            PlayerPosDefault.className+=" player-body";
+            PlayerPosDefault.classList.remove("BBrick");
+            prevPlace=document.getElementById(prevPlaceId);
+            console.log(prevPlaceId);
+            console.log(prevPlace);
+            console.log(PlayerPosDefault);
+          }
+        break;
+
+        case 39:
+            //alert('right');
+            if((PlayerPosDefault.id % 10)!==9) {
+              prevPlace.classList.remove("player-body");
+              prevPlace.className+=" BBrick";
+              prevPlaceId++;
+              PlayerPosDefault=document.getElementById(prevPlaceId);
+              PlayerPosDefault.className+=" player-body";
+              PlayerPosDefault.classList.remove("BBrick");
+              prevPlace=document.getElementById(prevPlaceId);
+              console.log(prevPlaceId);
+              console.log(prevPlace);
+              console.log(PlayerPosDefault);
+            }
+        break;
+
+        case 38:
+            //alert('up');
+            if(PlayerPosDefault.classList.contains("row1")) {}
+            else{
+              prevPlace.classList.remove("player-body");
+              prevPlace.className+=" BBrick";
+              prevPlaceId-=10;
+              PlayerPosDefault=document.getElementById(prevPlaceId);
+              PlayerPosDefault.className+=" player-body";
+              PlayerPosDefault.classList.remove("BBrick");
+              prevPlace=document.getElementById(prevPlaceId);
+              console.log(prevPlaceId);
+              console.log(prevPlace);
+              console.log(PlayerPosDefault);
+            }
+        break;
+
+        case 40:
+            //alert('down');
+            if(PlayerPosDefault.classList.contains("row10")) {}
+            else {
+              prevPlace.classList.remove("player-body");
+              prevPlace.className+=" BBrick";
+              prevPlaceId+=10;
+              PlayerPosDefault=document.getElementById(prevPlaceId);
+              PlayerPosDefault.className+=" player-body";
+              PlayerPosDefault.classList.remove("BBrick");
+              prevPlace=document.getElementById(prevPlaceId);
+              console.log(prevPlaceId);
+              console.log(prevPlace);
+              console.log(PlayerPosDefault);
+            }
+            break;
+    }
+};
+
+};
+ldr.onclick=function(){
+  content.innerHTML="<h2>Leaderboards</h2>";
+};
+how.onclick=function(){
+  content.innerHTML="<h2>How to Play</h2>";
+};
+
+
+</script>
+</html>

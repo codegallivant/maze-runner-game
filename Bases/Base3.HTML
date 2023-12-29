@@ -1,0 +1,450 @@
+<html>
+<!--
+I'm Still working on this game.
+Don't read that shuckin crap now:
+Hi guys, this is actually my first proper game I've made.
+I hope you guys like it.
+
+To understand the game better, read the book, 'THE MAZE RUNNER'.
+
+But theres no problem if you haven't read the book. Just click on the 'HOW TO' button.
+-->
+<head>
+  <title>THE MAZE RUNNER(Game Making in Progress)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <style>
+
+  body{
+    border-width:20px;
+  }
+  br {
+    line-height: 47px;
+  }
+  .player-body{
+    color: white;
+    font-size: 1em;
+    height: 45px;
+    width: 35px;
+    background-color: blue;
+    border-radius: 7px;
+    border: 4px groove  blue;
+    position: relative;
+    left: 10px;
+
+  }
+  .player-eyes{
+    height: 4px;
+  	width: 7px;
+  	border-radius: 6px;
+  	background-color: grey;
+
+  }
+  #player-eye-one{
+    margin-left: 5px;
+  }
+  #player-eye-two{
+    margin-right: 5px;
+  }
+  #player-mouth{
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 10px;
+    background-color: grey;
+    width: 20px;
+  }
+  .BBrick{
+    text-align: center;
+    color: grey;
+    font-size: 1em;
+    background-color: green;
+    height: 40px;
+    width: 30px;
+    border-left: 5px solid green;
+    border-right: 8px solid green;
+    border-top: 7px solid green;
+    border-bottom:7px solid green;
+
+    border-radius: 2px;
+  }
+
+  .UBBrick{
+    background-color: darkgreen;
+    height:40px;
+    width: 30px;
+    border: 5px solid darkgreen;
+    border-right: 8px solid darkgreen;
+    border-radius: 10px;
+  }
+  #HEAD{
+    font-size: 1em;
+    font-family: monospace;
+    text-align: center;
+    height: 50px;
+    padding: 15px;
+    background-color: black;
+    color: white;
+  }
+  #play{
+    background-color: blue;
+    border: 5px ridge blue;
+    font-weight:bold;
+    color: white;
+    border-radius: 3px;
+    width: 180px;
+    padding:10px;
+    font-family: cursive;
+    font-size: 1em;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  #how{
+    background-color: green;
+    border: 5px ridge green;
+    font-weight:bold;
+    color: white;
+    border-radius: 3px;
+    width: 180px;
+    padding:10px;
+    font-family: cursive;
+    font-size: 1em;
+    margin-left: 50px;
+    margin-right: 50px;
+
+
+  }
+  #ldr{
+    background-color: red;
+    border: 5px ridge red;
+    font-weight: bold;
+    font-weight:bold;
+    color: white;
+    border-radius: 3px;
+    width: 200px;
+    padding:10px;
+    font-family: cursive;
+    font-size: 1em;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+   #play:active{
+     font-size: 1.2em;
+     padding: 0px;
+     padding: 7px;
+   }
+   #how:active{
+     font-size: 1.2em;
+     padding: 0px;
+     padding: 7px;
+   }
+  </style>
+
+  <script>
+  var BBrick = document.createElement('div');
+  var NoC=14;
+
+  /*
+  playerBody.appendChild(playerMouth);
+  playerBody.appendChild(playerEyeOne);
+  playerBody.appendChild(playerEyeTwo);
+  */
+
+  BBrick.textContent="BB";
+  BBrick.className="BBrick";
+
+
+  </script>
+</head>
+<body>
+  <div id="HEAD"><h1>THE MAZE RUNNER- GAME</h1></div>
+  <hr>
+
+
+<div id="content">
+  <center>
+    <br>
+    <br>
+  <input type="button" value="PLAY" id="play" class="form">
+  <input type="button" value="LEADERBOARDS" id="ldr" class="form">
+  <input type="button" value="HOW TO" id="how" class="form">
+</center>
+
+</div>
+
+</body>
+<script>;
+
+var play=document.getElementById("play");
+var ldr=document.getElementById('ldr');
+var how=document.getElementById('how');
+var content=document.getElementById('content');
+
+var arrays=[];
+for (var a = 0; a < 10; a++) {
+    window["array" + a]=[];
+    arrays.push(window["array"+a]);
+}
+
+for (var v = 0; v < NoC; v++) {
+    window["a" + v]=document.createElement('div');
+    window["b" + v]=document.createElement('div');
+    window["c" + v]=document.createElement('div');
+    window["d" + v]=document.createElement('div');
+    window["e" + v]=document.createElement('div');
+    window["f" + v]=document.createElement('div');
+    window["g" + v]=document.createElement('div');
+    window["h" + v]=document.createElement('div');
+    window["i" + v]=document.createElement('div');
+    window["j" + v]=document.createElement('div');
+}
+  /*
+  var letterOfvar=[
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z"];
+  */
+for(index=0;index<NoC;index++) {
+  array0[index]=window["a"+index];
+  array1[index]=window["b"+index];
+  array2[index]=window["c"+index];
+  array3[index]=window["d"+index];
+  array4[index]=window["e"+index];
+  array5[index]=window["f"+index];
+  array6[index]=window["g"+index];
+  array7[index]=window["h"+index];
+  array8[index]=window["i"+index];
+  array9[index]=window["j"+index];
+}
+var rowArray=[];
+for(cssdefPosLeft=0;cssdefPosLeft<10;cssdefPosLeft++) {
+  window["row"+cssdefPosLeft]=document.getElementsByClassName("row"+cssdefPosLeft.toString());
+  rowArray.push(window["row"+cssdefPosLeft]);
+}
+
+var DefaultId=0;
+var row=0;
+play.onclick=function(){
+  content.innerHTML='';
+  document.body.style.backgroundColor="darkgreen";
+  var currentBid;
+  var previousBid;
+  var currentB;
+  var previousB;
+  var arrayE;
+  var BrickLeftPos=0;
+  for(r=0;r<10;r++) {
+    for(h=0;h<NoC;h++) {
+      console.log("array:"+arrays[r]);
+      console.log("row:"+row);
+      console.log("r:"+r);
+      console.log("h:"+h);
+      arrayE = arrays[row][h];
+      content.appendChild(arrayE);
+      arrayE.id=h+DefaultId;
+
+      arrayE.className="block BBrick row"+row.toString();
+
+      console.log("arrayE:"+arrayE);
+      currentBid=document.getElementById(h+DefaultId).id;
+      previousBid=parseFloat(document.getElementById(h+DefaultId).id)-1;
+      console.log('currentID:'+currentBid);
+      console.log('previousID:'+previousBid);
+      currentB=document.getElementById(currentBid);
+      previousB=document.getElementById(previousBid+1);
+      console.log('currentE:'+currentB);
+      console.log('previousE:'+previousB);
+      currentB.style.marginLeft=(h+DefaultId)*43;
+        var Row0leftPos=currentB.style.left;
+
+
+      document.getElementById(h+DefaultId).style.position="absolute";
+      document.getElementById(h+DefaultId).style.borderBottom="0px";
+      document.getElementById(h+DefaultId).style.left=(-1*BrickLeftPos).toString()+"px";
+
+
+
+
+//      document.getElementById(h+DefaultId).style.left= parseFloat(previousB.style.left)+(13*40)+"px";
+  //    document.getElementById(h+DefaultId).style.top= parseFloat(previousB.style.top)-40+"px";
+
+/*
+      if(row!==0) {
+        currentB.style.left=(h*90)+(rowArray[row][h].style.left);
+        currentB.style.top=200+(row*40)+"px";
+      }
+      else{
+        currentB.style.top="200px";
+      }
+      /*
+      var elem = document.getElementsByClassName(("row"+row.toString()));
+      var OrigPosLeft = getComputedStyle( elem[h], null).getPropertyValue("left");
+      var PosLeft=parseInt(OrigPosLeft)-90+"px";
+
+      var blocks=document.getElementsByClassName('block');
+      window["OrigPosLeft"+row]=currentB.style.left;
+      //blocks[arrayE.id].style.left=(parseFloat(currentB.style.left)-(h*90))+"px".toString();
+      blocks[arrayE.id].style.left=(parseFloat(window["OrigPosLeft"+row])-(h*90))+"px".toString();
+*/
+      console.log('row added');
+    }
+    row++;
+    BrickLeftPos=(row*40*(NoC+1))+(2*row);
+    content.innerHTML+="<br>";
+    DefaultId+=NoC;
+    //rows.style.left=h*90+"px";
+  }
+
+
+
+
+  //Player commands
+  var playerBody= document.createElement('div');
+  playerBody.className="player-body";
+  var PBodyC=document.getElementsByClassName("player-body")
+  PBodyC.textContent="G";
+
+
+  var PlayerPosDefault=document.getElementById(116);
+
+  PlayerPosDefault.classList.remove("BBrick");
+  PlayerPosDefault.className="player-body row9";
+  var prevPlaceId=116;
+  var prevPlace=document.getElementById(prevPlaceId);
+
+  //Maze obstacles
+
+  var UBBrick = [
+    document.getElementById(81),
+    document.getElementById(82),
+    document.getElementById(71),
+    document.getElementById(61)
+  ];
+  for(i=0 ; i<UBBrick.length ; i++) {
+      UBBrick[i].classList.remove("BBrick");
+      UBBrick[i].className+=" UBBrick";
+      console.log('UBBrick added');
+  }
+
+
+
+
+//Player movements
+  document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37:
+          if((PlayerPosDefault.id % NoC) !== 0) {
+            console.log('first true');
+            console.log(PlayerPosDefault.id-1);
+            if(document.getElementById(PlayerPosDefault.id-1).classList.contains('UBBrick')) {}
+            else {
+              prevPlace.classList.remove("player-body");
+              prevPlace.className+=" BBrick";
+              prevPlaceId--;
+              PlayerPosDefault=document.getElementById(prevPlaceId);
+              PlayerPosDefault.classList.add("player-body");
+              PlayerPosDefault.classList.remove("BBrick");
+              prevPlace=document.getElementById(prevPlaceId);
+              console.log(prevPlaceId);
+              console.log(prevPlace);
+              console.log(PlayerPosDefault);
+            }
+          }
+        break;
+
+        case 39:
+            //alert('right');
+            if((PlayerPosDefault.id % NoC)!==(NoC-1)) {
+              console.log('first true');
+              console.log(parseFloat(PlayerPosDefault.id)+1);
+              if(document.getElementById(parseFloat(PlayerPosDefault.id)+1).classList.contains('UBBrick')) {}
+              else {
+                prevPlace.classList.remove("player-body");
+                prevPlace.className+=" BBrick";
+                prevPlaceId++;
+                PlayerPosDefault=document.getElementById(prevPlaceId);
+                PlayerPosDefault.className+=" player-body";
+                PlayerPosDefault.classList.remove("BBrick");
+                prevPlace=document.getElementById(prevPlaceId);
+                console.log(prevPlaceId);
+                console.log(prevPlace);
+                console.log(PlayerPosDefault);
+              }
+            }
+        break;
+
+        case 38:
+            //alert('up');
+            if(PlayerPosDefault.classList.contains("row0")) {}
+            else{
+              if(document.getElementById(parseFloat(PlayerPosDefault.id)-NoC).classList.contains("UBBrick")) {}
+              else{
+                prevPlace.classList.remove("player-body");
+                prevPlace.className+=" BBrick";
+                prevPlaceId-=NoC;
+                PlayerPosDefault=document.getElementById(prevPlaceId);
+                PlayerPosDefault.className+=" player-body";
+                PlayerPosDefault.classList.remove("BBrick");
+                prevPlace=document.getElementById(prevPlaceId);
+                console.log(prevPlaceId);
+                console.log(prevPlace);
+                console.log(PlayerPosDefault);
+              }
+            }
+        break;
+
+        case 40:
+            //alert('down');
+            if(PlayerPosDefault.classList.contains("row9")) {}
+            else {
+              if(document.getElementById(parseFloat(PlayerPosDefault.id)+NoC).classList.contains("UBBrick")) {}
+              else{
+                prevPlace.classList.remove("player-body");
+                prevPlace.className+=" BBrick";
+                prevPlaceId+=NoC;
+                PlayerPosDefault=document.getElementById(prevPlaceId);
+                PlayerPosDefault.className+=" player-body";
+                PlayerPosDefault.classList.remove("BBrick");
+                prevPlace=document.getElementById(prevPlaceId);
+                console.log(prevPlaceId);
+                console.log(prevPlace);
+                console.log(PlayerPosDefault);
+              }
+            }
+            break;
+    }
+};
+
+};
+ldr.onclick=function(){
+  content.innerHTML="<h2>Leaderboards</h2>";
+};
+how.onclick=function(){
+  content.innerHTML="<h2>How to Play</h2>";
+};
+
+
+</script>
+</html>
